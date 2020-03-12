@@ -1,0 +1,1 @@
+"%ProgramFiles%\R\R-3.6.1\bin\Rscript.exe" "%homepath%\Desktop\LIFT_2019\R output\Ammonia Forecast.R"
