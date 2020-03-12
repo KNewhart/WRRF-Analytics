@@ -274,7 +274,7 @@ colnames(forecast.data)[ncol(forecast.data)] <- paste("Forecasted",predictor.var
 ##### Write data #####
 final.data <- forecast.data*training.sd+training.mean
 write.data <- data.frame(rep(predictor.tag, nrow(final.data)))
-write.data <- cbind(write.data, as.character(format(index(final.data), "%m/%d/%Y %H:%M")))
+write.data <- cbind(write.data, as.character(format(index(final.data), "%m/%d/%Y %H:%M:%S")))
 write.data <- cbind(write.data, data.frame(round(final.data,3)))
 colnames(write.data) <- c("Tagname","TimeStamp","Value")
 write.csv(write.data, file=paste0(historian.import.path,"HistorianDataImport.csv"),
