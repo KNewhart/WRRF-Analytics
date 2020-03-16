@@ -37,6 +37,7 @@ sapply(c("readr",
 
 ##### Compile data #####
 # Import CSVs
+print("Importing files...")
 files.to.import <- list.files(path=historian.export.path, "[.]CSV") # All "CSV"s in the folder
 files.to.import <- c(files.to.import, list.files(path=historian.export.path, "[.]csv")) # All "csv"s in the folder
 if(length(files.to.import) == 0) print("No files to import. Check working directory.")
@@ -79,13 +80,14 @@ colnames(all.data) <- sapply(colnames(all.data), function(x) strsplit(x, "[.]")[
   five.min.timestamps <- seq(as.numeric(index(all.data)[1]), as.numeric(last(index(all.data))), data.interval)
   # five.min.timestamps <- round(as.POSIXct(five.min.timestamps, origin="1970-01-01"), "mins")
 # }
-
+print("Finding timestamps...")
 index.all.data <- as.numeric(index(all.data))
 row.index <- lapply(five.min.timestamps, function(start) {
   intersect(which(index.all.data >= start), 
             which(index.all.data < (start+data.interval)))
 })
 
+print("Averaging to timestamps...")
 mean.data <- do.call("rbind", lapply(row.index, function(r) {colMeans(all.data[r,], na.rm=TRUE)}))
 mean.data <- na.locf(mean.data)
 mean.data <- na.locf(mean.data, fromLast=TRUE)
@@ -93,6 +95,7 @@ mean.data <- xts(mean.data, order.by=as.POSIXct(five.min.timestamps, origin="197
 
 # Add sine/cosine pairs
 # Convert timestamps to runtime and project onto a unit circle 
+print("Setting up training data...")
 time.stamps <- difftime(index(mean.data), index(mean.data)[1], units = "mins")
 time.stamps <- as.numeric(time.stamps) %% 1440 # Cycles of 1 day are constructed (1440 min/day)
 time.stamps <- (time.stamps*360/1440)*pi/180 # Cycles of minutes are converted to radians
@@ -122,6 +125,7 @@ train.y <- matrix(train.y, nrow = nrow(train.y))
 test.x <- scale(testing.data, center=train.mean[-forecast.col], scale=train.sd[-forecast.col])
 test.x <- matrix(test.x, nrow = nrow(test.x))
 
+print("Train diurnal-linear model...")
 # Train model when lambda=0 (initial parameter estimate)
 mod.ridge <- cv.glmnet(train.x,train.y,alpha=0)
 predict.mod.ridge <- predict(mod.ridge, newx=train.x)
@@ -133,7 +137,7 @@ pred.adapt <- predict(mod.adaptive,newx=train.x, s='lambda.1se')
 
 train.x <- cbind(train.x, pred.adapt)
 
-
+print("Train neural network...")
 model <- keras_model_sequential() %>%
   layer_dense(units=round(ncol(train.x)*2/3), input_shape=c(NULL, ncol(train.x))) %>%
   layer_dense(units=ncol(train.x)) %>%
@@ -146,7 +150,8 @@ history <- model %>% fit(
   x=train.x,
   y=train.y,
   batch_size=1,
-  epochs=20
+  epochs=20,
+ verbose=0
 )
 validation <- model %>% predict(
   x=train.x,
@@ -154,7 +159,7 @@ validation <- model %>% predict(
 )
 r2 <- cor(validation, train.y)^2;r2
 
-
+print("Forecast...")
 # Forecast
 pred.adapt <- predict(mod.adaptive,newx=test.x, s='lambda.1se')
 test.x <- cbind(test.x, pred.adapt)
@@ -166,7 +171,8 @@ prediction <- model %>% predict(
 
 forecast <- prediction*train.sd[forecast.col]+train.mean[forecast.col]
 if(forecast < 0) forecast <- 0
-
+forecast
+print("Saving results...")
 ##### Write data #####
 write.data <- data.frame(predictor.tag)
 write.data <- cbind(write.data, as.character(format(index(testing.data), "%m/%d/%Y %H:%M:%S")))
