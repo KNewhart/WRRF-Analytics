@@ -1,5 +1,6 @@
 ##### Variables #####
-setwd(file.path(Sys.getenv("USERPROFILE"),"Desktop", "LIFT_2019"))
+setwd("C:/Users/newhartk/Desktop/LIFT_2019")
+# setwd(file.path(Sys.getenv("USERPROFILE"),"Desktop", "LIFT_2019"))
 # setwd(file.path(Sys.getenv("USERPROFILE"),"Dropbox", "Code", "WRRF-Analytics"))
 historian.export.path <- paste0(getwd(),"/Raw data/")
 historian.import.path <- paste0(getwd(),"/R output/")
@@ -36,6 +37,13 @@ sapply(c("readr",
          "keras"), packageLoad)
 
 ##### Compile data #####
+# files <- list.files(historian.export.path, pattern="[.]CSV", full.names = TRUE)
+# data <- read.csv(files[1], stringsAsFactors=FALSE)
+# date.range <- c(data[1,2], data[nrow(data),2])
+#write.csv(date.range, file=file.path(historian.export.path, "file_date_range.csv"),
+#		row.names = FALSE,
+#            col.names = FALSE)
+
 # Import CSVs
 print("Importing files...")
 files.to.import <- list.files(path=historian.export.path, "[.]CSV") # All "CSV"s in the folder
@@ -62,6 +70,8 @@ colnames(all.data) <- sapply(colnames(all.data), function(x) strsplit(x, "[.]")[
 
 # Save compiled process data
 # save(all.data, file = paste0(historian.import.path,"data_save_01.RData"))
+write.csv(all.data, file=paste0(historian.import.path,"data_save_01.csv"))
+
 # load(file = paste0(historian.import.path,"data_save_01.RData"))
 
 ##### FOR TESTING  #####
@@ -77,7 +87,7 @@ colnames(all.data) <- sapply(colnames(all.data), function(x) strsplit(x, "[.]")[
 #   # five.min.timestamps <- round(as.POSIXct(five.min.timestamps, origin="1970-01-01"), "mins")
 #   five.min.timestamps <- five.min.timestamps[which(five.min.timestamps > as.numeric(index(all.data)[1]))]
 # } else {
-  five.min.timestamps <- seq(as.numeric(index(all.data)[1]), as.numeric(last(index(all.data))), data.interval)
+five.min.timestamps <- seq(as.numeric(index(all.data)[1]), as.numeric(last(index(all.data))), data.interval)
   # five.min.timestamps <- round(as.POSIXct(five.min.timestamps, origin="1970-01-01"), "mins")
 # }
 print("Finding timestamps...")
@@ -103,6 +113,7 @@ diurnal.x <- do.call("cbind", lapply(1:6, function(n) {
   eval(parse(text=paste0("sin(",n,"*time.stamps)","+cos(",n,"*time.stamps)", collapse="+")))
 }))
 mean.data <- cbind(mean.data, diurnal.x)
+write.csv(mean.data, file=paste0(historian.import.path,"data_save_02.csv"))
 
 rows <- which(round(difftime(index(mean.data), index(mean.data)[1], units = "mins"),0) == forecast.horizon)
 rows <- rows[1]
@@ -125,6 +136,8 @@ train.y <- matrix(train.y, nrow = nrow(train.y))
 test.x <- scale(testing.data, center=train.mean[-forecast.col], scale=train.sd[-forecast.col])
 test.x <- matrix(test.x, nrow = nrow(test.x))
 
+
+
 print("Train diurnal-linear model...")
 # Train model when lambda=0 (initial parameter estimate)
 mod.ridge <- cv.glmnet(train.x,train.y,alpha=0)
@@ -137,11 +150,24 @@ pred.adapt <- predict(mod.adaptive,newx=train.x, s='lambda.1se')
 
 train.x <- cbind(train.x, pred.adapt)
 
+write.csv(train.x, file=paste0(historian.import.path,"data_save_03.csv"))
+
+# print(paste("Is keras available?", is_keras_available()))
+
+# print(Sys.getenv())
+
+# if(!is_keras_available()) install_keras()
+tryCatch({install_keras()})
+
+
 print("Train neural network...")
-model <- keras_model_sequential() %>%
-  layer_dense(units=round(ncol(train.x)*2/3), input_shape=c(NULL, ncol(train.x))) %>%
-  layer_dense(units=ncol(train.x)) %>%
-  layer_dense(units = 1)
+
+while(!("model" %in% ls())) {
+  model <- tryCatch({keras_model_sequential() %>%
+    layer_dense(units=round(ncol(train.x)*2/3), input_shape=c(NULL, ncol(train.x))) %>%
+    layer_dense(units=ncol(train.x)) %>%
+    layer_dense(units = 1)})
+}
 model %>% compile(
   optimizer = optimizer_rmsprop(),
   loss = "mean_squared_error"
@@ -180,10 +206,11 @@ write.data <- cbind(write.data, data.frame(round(forecast,3)))
 colnames(write.data) <- c("Tagname","TimeStamp","Value")
 write.csv(write.data, file=paste0(historian.import.path,"HistorianDataImport.csv"),
           row.names = FALSE, quote = FALSE)
+write.data
 
 # Save results
 model.fit <- data.frame("Time" = as.character(index(testing.data)),"Rsqu" = r2, "Forecast" = forecast, stringsAsFactors = FALSE)
-if(!("Model_Results.csv" %in% list.files(path=historian.import.path))) {
+if(!("ModelResults.csv" %in% list.files(path=historian.import.path))) {
   write.csv(model.fit, file=paste0(historian.import.path,"ModelResults.csv"), row.names = FALSE)
 } else {
   all.model.fit <- read.csv(file=paste0(historian.import.path,"ModelResults.csv"))
