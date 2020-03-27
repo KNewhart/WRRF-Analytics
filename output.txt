@@ -1,0 +1,14 @@
+Microsoft (R) Windows Script Host Version 5.812
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+3/27/2020 12:20:11 PM: Starting Raw Data Export for tag WWSCADA2.BASIN3_16_DO_PVENG.F_CV, from 3/23/2020 12:20:11 PM - 3/27/2020 12:20:11 PM
+3/27/2020 12:20:12 PM: Connected to Historian Server - ww-historian
+3/27/2020 12:20:15 PM: Query execution completed
+3/27/2020 12:20:23 PM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_16_DO_PVENG.F_CV.CSV
+3/27/2020 12:20:24 PM: Starting Raw Data Export for tag WWSCADA2.BASIN3_7_DO_PVENG.F_CV, from 3/23/2020 12:20:24 PM - 3/27/2020 12:20:24 PM
+3/27/2020 12:20:24 PM: Connected to Historian Server - ww-historian
+3/27/2020 12:20:28 PM: Query execution completed
+3/27/2020 12:20:36 PM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_7_DO_PVENG.F_CV.CSV
+3/27/2020 12:20:37 PM: Starting Raw Data Export for tag WWSCADA2.NIX33384_AB3_Z8_DO.F_CV, from 3/23/2020 12:20:37 PM - 3/27/2020 12:20:37 PM
+3/27/2020 12:20:37 PM: Connected to Historian Server - ww-historian
+3/27/2020 12:20:43 PM: Query execution completed

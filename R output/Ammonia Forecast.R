@@ -34,6 +34,7 @@ sapply(c("readr",
          "taRifx",
          "doParallel",
          "foreach",
+	   "tensorflow",
          "keras"), packageLoad)
 
 ##### Compile data #####
@@ -152,12 +153,10 @@ train.x <- cbind(train.x, pred.adapt)
 
 write.csv(train.x, file=paste0(historian.import.path,"data_save_03.csv"))
 
-# print(paste("Is keras available?", is_keras_available()))
-
 # print(Sys.getenv())
 
-# if(!is_keras_available()) install_keras()
-tryCatch({install_keras()})
+if(!is_keras_available()) tryCatch({install_keras()})
+
 
 
 print("Train neural network...")
