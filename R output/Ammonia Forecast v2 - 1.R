@@ -1,17 +1,9 @@
 ##### Variables #####
 setwd("C:/Users/newhartk/Desktop/LIFT_2019")
-# setwd(file.path(Sys.getenv("USERPROFILE"),"Desktop", "LIFT_2019"))
-# setwd(file.path(Sys.getenv("USERPROFILE"),"Dropbox", "Code", "WRRF-Analytics"))
-historian.export.path <- paste0(getwd(),"/Raw data/")
-historian.import.path <- paste0(getwd(),"/R output/")
-predictor.variable <- "NIA33391_AB3_AMMONIA"
+source("Ammonia Forecast v2 - 0.R") # Load variables
 print(paste("Forecasting:", predictor.variable))
-predictor.tag <- "NIA33391_AB3_PREDICTED_AMMONIA.F_CV"
 print(paste("Forecasted Tag:", predictor.tag))
-forecast.horizon <- 50 # In minutes
 print(paste("Forecast Horizon:", forecast.horizon))
-data.interval <- 5*60 # In minutes
-training.window <- 5+forecast.horizon/60/60 # in days
 
 ##### Load libraries #####
 # Function to install and load libraries
@@ -57,7 +49,7 @@ files.to.import <- c(files.to.import, list.files(path=historian.export.path, "[.
 if(length(files.to.import) > 0) sapply(files.to.import, file.remove)
 
 # VBS CALL
-pathofvbscript <- normalizePath("Raw data/Historian Data Export CSV - Copy.vbs")
+pathofvbscript <- normalizePath("Raw data/Historian Data Export CSV v2.vbs")
 # Pull in VBS code
 vbs_lines <- readLines(con = pathofvbscript)
 # Ammend first line with the number of days to compile
@@ -67,4 +59,4 @@ writeLines(text = vbs_lines,
            con = pathofvbscript)
 print("Run Historian Export...")
 # Run VBS code
-# shell(shQuote(normalizePath("01 Historian Data Export CSV - Copy.bat")), wait=TRUE)
+# shell(shQuote(normalizePath("01 Historian Data Export CSV v2.bat")), wait=TRUE)

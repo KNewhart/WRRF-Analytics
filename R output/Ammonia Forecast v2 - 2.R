@@ -1,17 +1,11 @@
 ##### Variables #####
 setwd("C:/Users/newhartk/Desktop/LIFT_2019")
-# setwd(file.path(Sys.getenv("USERPROFILE"),"Desktop", "LIFT_2019"))
-# setwd(file.path(Sys.getenv("USERPROFILE"),"Dropbox", "Code", "WRRF-Analytics"))
-historian.export.path <- paste0(getwd(),"/Raw data/")
-historian.import.path <- paste0(getwd(),"/R output/")
-predictor.variable <- "NIA33391_AB3_AMMONIA"
+source("Ammonia Forecast v2 - 0.R") # Load variables
 print(paste("Forecasting:", predictor.variable))
-predictor.tag <- "NIA33391_AB3_PREDICTED_AMMONIA.F_CV"
 print(paste("Forecasted Tag:", predictor.tag))
-forecast.horizon <- 50 # In minutes
 print(paste("Forecast Horizon:", forecast.horizon))
-data.interval <- 5*60 # In minutes
-training.window <- 5+forecast.horizon/60/60 # in days
+
+
 
 ##### Load libraries #####
 # Function to install and load libraries
