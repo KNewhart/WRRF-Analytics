@@ -1,6 +1,6 @@
 ##### Variables #####
 setwd("C:/Users/newhartk/Desktop/LIFT_2019")
-source("Ammonia Forecast v2 - 0.R") # Load variables
+source("R output/Ammonia Forecast v2 - 0.R") # Load variables
 print(paste("Forecasting:", predictor.variable))
 print(paste("Forecasted Tag:", predictor.tag))
 print(paste("Forecast Horizon:", forecast.horizon))
