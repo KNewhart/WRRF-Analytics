@@ -205,7 +205,7 @@ write.csv(write.data, file=paste0(historian.import.path,"HistorianDataImport.csv
 write.data
 
 # Save results
-model.fit <- data.frame("Time" = as.character(index(testing.data)),"Rsqu" = r2, "Forecast" = forecast, stringsAsFactors = FALSE)
+model.fit <- data.frame("Time" = as.character(index(testing.data)),"Rsqu" = r2, "Forecast" = forecast, "Persistence" = as.numeric(testing.data[,predictor.col]),stringsAsFactors = FALSE)
 if(!("ModelResults.csv" %in% list.files(path=historian.import.path))) {
   write.csv(model.fit, file=paste0(historian.import.path,"ModelResults.csv"), row.names = FALSE)
 } else {
