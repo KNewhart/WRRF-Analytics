@@ -70,8 +70,8 @@ all.data <- do.call("cbind", obj.list)
 colnames(all.data) <- sapply(colnames(all.data), function(x) strsplit(x, "[.]")[[1]][2])
 
 # Save compiled process data
-# save(all.data, file = paste0(historian.import.path,"data_save_01.RData"))
-write.csv(all.data, file=paste0(historian.import.path,"data_save_01.csv"))
+save(all.data, file = paste0(historian.import.path,"data_save_01.RData"))
+#write.csv(all.data, file=paste0(historian.import.path,"data_save_01.csv"))
 
 # load(file = paste0(historian.import.path,"data_save_01.RData"))
 
@@ -114,7 +114,7 @@ diurnal.x <- do.call("cbind", lapply(1:6, function(n) {
   eval(parse(text=paste0("sin(",n,"*time.stamps)","+cos(",n,"*time.stamps)", collapse="+")))
 }))
 mean.data <- cbind(mean.data, diurnal.x)
-write.csv(mean.data, file=paste0(historian.import.path,"data_save_02.csv"))
+#write.csv(mean.data, file=paste0(historian.import.path,"data_save_02.csv"))
 
 rows <- which(round(difftime(index(mean.data), index(mean.data)[1], units = "mins"),0) == forecast.horizon)
 rows <- rows[1]
@@ -151,7 +151,7 @@ pred.adapt <- predict(mod.adaptive,newx=train.x, s='lambda.1se')
 
 train.x <- cbind(train.x, pred.adapt)
 
-write.csv(train.x, file=paste0(historian.import.path,"data_save_03.csv"))
+#write.csv(train.x, file=paste0(historian.import.path,"data_save_03.csv"))
 
 # print(Sys.getenv())
 

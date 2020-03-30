@@ -1,5 +1,6 @@
-Const n = 4
+Const n = 5
 
+Call ExportDataToCSV("ww-historian", "WWSCADA2.NIF31053_PE_TO_ABAS_FLOW.F_CV", Now-n, Now)
 Call ExportDataToCSV("ww-historian", "WWSCADA2.BASIN3_16_DO_PVENG.F_CV", Now-n, Now)
 Call ExportDataToCSV("ww-historian", "WWSCADA2.BASIN3_7_DO_PVENG.F_CV", Now-n, Now)
 Call ExportDataToCSV("ww-historian", "WWSCADA2.NIX33384_AB3_Z8_DO.F_CV", Now-n, Now)
@@ -17,7 +18,7 @@ Call ExportDataToCSV("ww-historian", "WWSCADA2.NIR33392_AB3_Z9_NITRATE.F_CV", No
 'Call ExportDataToCSV("ww-historian", "WWSCADA2.NP4232_CA.F_CV", Now-3.04, Now)
 Call ExportDataToCSV("ww-historian", "WWSCADA2.NR4242.F_CV", Now-n, Now)
 'Call ExportDataToCSV("ww-historian", "WWSCADA2.NA33055_ABASIN_INFL_AMMONIA.F_CV", Now-3.04, Now)
-Call ExportDataToCSV("ww-historian", "WWSCADA2.NIF31053_PE_TO_ABAS_FLOW.F_CV", Now-n, Now)
+
 
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ' Function ExportDataToCSV(ServerName, TagName, StartTime, EndTime)
