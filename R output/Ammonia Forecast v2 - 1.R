@@ -36,12 +36,14 @@ end <- Sys.time()
 # Import old data
 update.all.data <- FALSE
 if("data_save_01.RData" %in% list.files(path=historian.import.path)) {
+   print("Old data found.")
    load(file = paste0(historian.import.path,"data_save_01.RData"))
    if(start > index(all.data)[1]) { # If the start data has already been compiled, 
-	all.data <- all.data[paste0(start,"/")] # Crop the already compiled data
 	start <- tail(index(all.data),n=1) # start will be the end of the already compiled data
-      update.all.data <-TRUE
+      update.all.data <- TRUE
    }
+} else {
+   print("No old data found.")
 }
 
 # VBS CALL

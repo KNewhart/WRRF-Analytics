@@ -38,6 +38,7 @@ end <- Sys.time()
 # Import old data
 update.all.data <- FALSE
 if("data_save_01.RData" %in% list.files(path=historian.import.path)) {
+   print("Old data found.")
    obj <- load(file = paste0(historian.import.path,"data_save_01.RData"))
    all.data <- get(obj)
    if(start > index(all.data)[1]) { # If the start data has already been compiled, 
@@ -62,12 +63,15 @@ obj.list <- lapply(files.to.import, function(file) {
   time.na <- which(!is.na(time))
   obj.data <- as.numeric(unlist(imported.file[time.na,3]))
   obj.data <- xts(obj.data, order.by=time[time.na])
+  if(length(obj.data)==0) obj.data <- xts(NA, order.by=end)
   colnames(obj.data) <- file
   return(obj.data)
 })
+
 new.data <- do.call("cbind", obj.list)
 colnames(new.data) <- sapply(colnames(new.data), function(x) strsplit(x, "[.]")[[1]][2])
-   
+names(colnames(new.data)) <- NULL
+
 # Merge all process data
 print("Merging files...")
 if(update.all.data) {
@@ -86,7 +90,6 @@ if(update.all.data) {
    save(all.data, file = paste0(historian.import.path,"data_save_01.RData"))
 }
 
-# Save compiled process data
 
 #write.csv(all.data, file=paste0(historian.import.path,"data_save_01.csv"))
 
@@ -226,3 +229,6 @@ if(!("ModelResults.csv" %in% list.files(path=historian.import.path))) {
   write.csv(all.model.fit, file=paste0(historian.import.path,"ModelResults.csv"), row.names = FALSE)
 }
 
+#save(all.data, file = paste0(historian.import.path,"data_save_01.RData"))
+
+#shell(shQuote(normalizePath("03 Historian Data Import CSV.bat")), wait=TRUE)
