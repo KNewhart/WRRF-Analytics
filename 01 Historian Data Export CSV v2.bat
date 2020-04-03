@@ -1,1 +1,1 @@
-%windir%\SysWOW64\cscript "%homepath%\Desktop\LIFT_2019\Raw data\Historian Data Export CSV - Copy.vbs"
+%windir%\SysWOW64\cscript "%homepath%\Desktop\LIFT_2019\Raw data\Historian Data Export CSV v2.vbs"

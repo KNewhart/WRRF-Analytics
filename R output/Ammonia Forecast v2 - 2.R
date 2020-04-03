@@ -38,7 +38,8 @@ end <- Sys.time()
 # Import old data
 update.all.data <- FALSE
 if("data_save_01.RData" %in% list.files(path=historian.import.path)) {
-   load(file = paste0(historian.import.path,"data_save_01.RData"))
+   obj <- load(file = paste0(historian.import.path,"data_save_01.RData"))
+   all.data <- get(obj)
    if(start > index(all.data)[1]) { # If the start data has already been compiled, 
 	all.data <- all.data[paste0(start,"/")] # Crop the already compiled data
 	start <- tail(index(all.data),n=1) # start will be the end of the already compiled data
@@ -72,17 +73,21 @@ print("Merging files...")
 if(update.all.data) {
    if(ncol(all.data) == ncol(new.data)) {
 	 all.data <- rbind(all.data, new.data)
+	 save(all.data, file = paste0(historian.import.path,"data_save_01.RData"))
    } else {
 	print("Error in data pull. Different number of variables in old vs new data.")
 	all.data <- rbind(all.data[, which(colnames(all.data) %in% colnames(new.data))],
 				new.data[, which(colnames(new.data) %in% colnames(all.data))])
+	file.remove(paste0(historian.import.path,"data_save_01.RData")) # Do a complete recompile next time
+	quit(save="no")
    }
 } else {
    all.data <- new.data
+   save(all.data, file = paste0(historian.import.path,"data_save_01.RData"))
 }
 
 # Save compiled process data
-save(all.data, file = paste0(historian.import.path,"data_save_01.RData"))
+
 #write.csv(all.data, file=paste0(historian.import.path,"data_save_01.csv"))
 
 
@@ -134,6 +139,12 @@ train.y <- matrix(train.y, nrow = nrow(train.y))
 test.x <- scale(testing.data, center=train.mean[-forecast.col], scale=train.sd[-forecast.col])
 test.x <- matrix(test.x, nrow = nrow(test.x))
 
+if(anyNA(train.x)) {
+   train.mean <- train.mean[!apply(train.x,2,anyNA)]
+   train.sd <- train.sd[!apply(train.x,2,anyNA)]
+   test.x <- test.x[,!apply(train.x,2,anyNA)]
+   train.x <- train.x[,!apply(train.x,2,anyNA)]
+}
 
 
 print("Train diurnal-linear model...")
@@ -205,7 +216,7 @@ write.csv(write.data, file=paste0(historian.import.path,"HistorianDataImport.csv
 write.data
 
 # Save results
-model.fit <- data.frame("Time" = as.character(index(testing.data)),"Rsqu" = r2, "Forecast" = forecast, "Persistence" = as.numeric(testing.data[,predictor.col]),stringsAsFactors = FALSE)
+model.fit <- data.frame("Time" = as.character(index(testing.data)),"Rsqu" = r2, "Forecast" = forecast, "Persistence" = as.numeric(testing.data[,predictor.col]), "Forecast Horizon"=forecast.horizon, "Training Window" =training.window, stringsAsFactors = FALSE)
 if(!("ModelResults.csv" %in% list.files(path=historian.import.path))) {
   write.csv(model.fit, file=paste0(historian.import.path,"ModelResults.csv"), row.names = FALSE)
 } else {

@@ -44,10 +44,6 @@ if("data_save_01.RData" %in% list.files(path=historian.import.path)) {
    }
 }
 
-files.to.import <- list.files(path=historian.export.path, "[.]CSV", full.names = TRUE) # All "CSV"s in the folder
-files.to.import <- c(files.to.import, list.files(path=historian.export.path, "[.]csv", full.names = TRUE)) # All "csv"s in the folder
-if(length(files.to.import) > 0) sapply(files.to.import, file.remove)
-
 # VBS CALL
 pathofvbscript <- normalizePath("Raw data/Historian Data Export CSV v2.vbs")
 # Pull in VBS code
