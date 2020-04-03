@@ -93,9 +93,9 @@ if(update.all.data) {
 
 ##### FOR TESTING  #####
 print("Finding timestamps...")
-five.min.timestamps <- seq(as.numeric(index(all.data)[1]), as.numeric(last(index(all.data))), data.interval)
+rounded.timestamps <- seq(as.numeric(index(all.data)[1]), as.numeric(last(index(all.data))), data.interval)
 index.all.data <- as.numeric(index(all.data))
-row.index <- lapply(five.min.timestamps, function(start) {
+row.index <- lapply(rounded.timestamps, function(start) {
   intersect(which(index.all.data >= start), 
             which(index.all.data < (start+data.interval)))
 })
@@ -104,7 +104,7 @@ print("Averaging to timestamps...")
 mean.data <- do.call("rbind", lapply(row.index, function(r) {colMeans(all.data[r,], na.rm=TRUE)}))
 mean.data <- na.locf(mean.data)
 mean.data <- na.locf(mean.data, fromLast=TRUE)
-mean.data <- xts(mean.data, order.by=as.POSIXct(five.min.timestamps, origin="1970-01-01"))
+mean.data <- xts(mean.data, order.by=as.POSIXct(rounded.timestamps, origin="1970-01-01"))
 
 # Add sine/cosine pairs
 # Convert timestamps to runtime and project onto a unit circle 
