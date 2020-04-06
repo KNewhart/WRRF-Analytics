@@ -61,59 +61,59 @@ Loading required package: keras
 Microsoft (R) Windows Script Host Version 5.812
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-4/6/2020 7:55:20 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_16_DO_PVENG.F_CV, from 4/6/2020 7:51:14 AM - 4/6/2020 7:55:20 AM
-4/6/2020 7:55:20 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:20 AM: Query execution completed
-4/6/2020 7:55:20 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_16_DO_PVENG.F_CV.CSV
-4/6/2020 7:55:20 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_7_DO_PVENG.F_CV, from 4/6/2020 7:51:14 AM - 4/6/2020 7:55:20 AM
-4/6/2020 7:55:21 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:21 AM: Query execution completed
-4/6/2020 7:55:21 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_7_DO_PVENG.F_CV.CSV
-4/6/2020 7:55:21 AM: Starting Raw Data Export for tag WWSCADA2.NIX33384_AB3_Z8_DO.F_CV, from 4/6/2020 7:51:15 AM - 4/6/2020 7:55:21 AM
-4/6/2020 7:55:21 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:21 AM: Query execution completed
-4/6/2020 7:55:21 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.NIX33384_AB3_Z8_DO.F_CV.CSV
-4/6/2020 7:55:21 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_8_DO_PVENG.F_CV, from 4/6/2020 7:51:15 AM - 4/6/2020 7:55:21 AM
-4/6/2020 7:55:21 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:21 AM: Query execution completed
-4/6/2020 7:55:21 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_8_DO_PVENG.F_CV.CSV
-4/6/2020 7:55:21 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_7_FLOW_PVENG.F_CV, from 4/6/2020 7:51:15 AM - 4/6/2020 7:55:21 AM
-4/6/2020 7:55:21 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:21 AM: Query execution completed
-4/6/2020 7:55:21 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_7_FLOW_PVENG.F_CV.CSV
-4/6/2020 7:55:21 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_8_FLOW_PVENG.F_CV, from 4/6/2020 7:51:15 AM - 4/6/2020 7:55:21 AM
-4/6/2020 7:55:21 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:21 AM: Query execution completed
-4/6/2020 7:55:21 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_8_FLOW_PVENG.F_CV.CSV
-4/6/2020 7:55:22 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_16_VALVE_POS_PVENG.F_CV, from 4/6/2020 7:51:16 AM - 4/6/2020 7:55:22 AM
-4/6/2020 7:55:22 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:22 AM: Query execution completed
-4/6/2020 7:55:22 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_16_VALVE_POS_PVENG.F_CV.CSV
-4/6/2020 7:55:22 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_7_VALVE_POS_PVENG.F_CV, from 4/6/2020 7:51:16 AM - 4/6/2020 7:55:22 AM
-4/6/2020 7:55:22 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:22 AM: Query execution completed
-4/6/2020 7:55:22 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_7_VALVE_POS_PVENG.F_CV.CSV
-4/6/2020 7:55:22 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_8_VALVE_POS_PVENG.F_CV, from 4/6/2020 7:51:16 AM - 4/6/2020 7:55:22 AM
-4/6/2020 7:55:22 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:22 AM: Query execution completed
-4/6/2020 7:55:22 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_8_VALVE_POS_PVENG.F_CV.CSV
-4/6/2020 7:55:22 AM: Starting Raw Data Export for tag WWSCADA2.NIA33391_AB3_AMMONIA.F_CV, from 4/6/2020 7:51:16 AM - 4/6/2020 7:55:22 AM
-4/6/2020 7:55:22 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:22 AM: Query execution completed
-4/6/2020 7:55:22 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.NIA33391_AB3_AMMONIA.F_CV.CSV
-4/6/2020 7:55:22 AM: Starting Raw Data Export for tag WWSCADA2.NIR33391_AB3_Z3_NITRATE.F_CV, from 4/6/2020 7:51:16 AM - 4/6/2020 7:55:22 AM
-4/6/2020 7:55:22 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:22 AM: Query execution completed
-4/6/2020 7:55:22 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.NIR33391_AB3_Z3_NITRATE.F_CV.CSV
-4/6/2020 7:55:23 AM: Starting Raw Data Export for tag WWSCADA2.NIR33392_AB3_Z9_NITRATE.F_CV, from 4/6/2020 7:51:17 AM - 4/6/2020 7:55:23 AM
-4/6/2020 7:55:23 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:23 AM: Query execution completed
-4/6/2020 7:55:23 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.NIR33392_AB3_Z9_NITRATE.F_CV.CSV
-4/6/2020 7:55:23 AM: Starting Raw Data Export for tag WWSCADA2.NR4242.F_CV, from 4/6/2020 7:51:17 AM - 4/6/2020 7:55:23 AM
-4/6/2020 7:55:23 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:23 AM: Query execution completed
-4/6/2020 7:55:23 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.NR4242.F_CV.CSV
-4/6/2020 7:55:23 AM: Starting Raw Data Export for tag WWSCADA2.NIF31053_PE_TO_ABAS_FLOW.F_CV, from 4/6/2020 7:51:17 AM - 4/6/2020 7:55:23 AM
-4/6/2020 7:55:23 AM: Connected to Historian Server - ww-historian
-4/6/2020 7:55:23 AM: Query execution completed
-4/6/2020 7:55:23 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.NIF31053_PE_TO_ABAS_FLOW.F_CV.CSV
+4/6/2020 8:48:51 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_16_DO_PVENG.F_CV, from 4/6/2020 8:43:13 AM - 4/6/2020 8:48:51 AM
+4/6/2020 8:48:51 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:51 AM: Query execution completed
+4/6/2020 8:48:51 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_16_DO_PVENG.F_CV.CSV
+4/6/2020 8:48:51 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_7_DO_PVENG.F_CV, from 4/6/2020 8:43:13 AM - 4/6/2020 8:48:51 AM
+4/6/2020 8:48:51 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:51 AM: Query execution completed
+4/6/2020 8:48:51 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_7_DO_PVENG.F_CV.CSV
+4/6/2020 8:48:51 AM: Starting Raw Data Export for tag WWSCADA2.NIX33384_AB3_Z8_DO.F_CV, from 4/6/2020 8:43:13 AM - 4/6/2020 8:48:51 AM
+4/6/2020 8:48:52 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:52 AM: Query execution completed
+4/6/2020 8:48:52 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.NIX33384_AB3_Z8_DO.F_CV.CSV
+4/6/2020 8:48:52 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_8_DO_PVENG.F_CV, from 4/6/2020 8:43:14 AM - 4/6/2020 8:48:52 AM
+4/6/2020 8:48:52 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:52 AM: Query execution completed
+4/6/2020 8:48:52 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_8_DO_PVENG.F_CV.CSV
+4/6/2020 8:48:52 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_7_FLOW_PVENG.F_CV, from 4/6/2020 8:43:14 AM - 4/6/2020 8:48:52 AM
+4/6/2020 8:48:52 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:52 AM: Query execution completed
+4/6/2020 8:48:52 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_7_FLOW_PVENG.F_CV.CSV
+4/6/2020 8:48:52 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_8_FLOW_PVENG.F_CV, from 4/6/2020 8:43:14 AM - 4/6/2020 8:48:52 AM
+4/6/2020 8:48:52 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:52 AM: Query execution completed
+4/6/2020 8:48:52 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_8_FLOW_PVENG.F_CV.CSV
+4/6/2020 8:48:52 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_16_VALVE_POS_PVENG.F_CV, from 4/6/2020 8:43:14 AM - 4/6/2020 8:48:52 AM
+4/6/2020 8:48:52 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:52 AM: Query execution completed
+4/6/2020 8:48:52 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_16_VALVE_POS_PVENG.F_CV.CSV
+4/6/2020 8:48:52 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_7_VALVE_POS_PVENG.F_CV, from 4/6/2020 8:43:14 AM - 4/6/2020 8:48:52 AM
+4/6/2020 8:48:52 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:52 AM: Query execution completed
+4/6/2020 8:48:52 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_7_VALVE_POS_PVENG.F_CV.CSV
+4/6/2020 8:48:53 AM: Starting Raw Data Export for tag WWSCADA2.BASIN3_8_VALVE_POS_PVENG.F_CV, from 4/6/2020 8:43:15 AM - 4/6/2020 8:48:53 AM
+4/6/2020 8:48:53 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:53 AM: Query execution completed
+4/6/2020 8:48:53 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.BASIN3_8_VALVE_POS_PVENG.F_CV.CSV
+4/6/2020 8:48:53 AM: Starting Raw Data Export for tag WWSCADA2.NIA33391_AB3_AMMONIA.F_CV, from 4/6/2020 8:43:15 AM - 4/6/2020 8:48:53 AM
+4/6/2020 8:48:53 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:53 AM: Query execution completed
+4/6/2020 8:48:53 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.NIA33391_AB3_AMMONIA.F_CV.CSV
+4/6/2020 8:48:53 AM: Starting Raw Data Export for tag WWSCADA2.NIR33391_AB3_Z3_NITRATE.F_CV, from 4/6/2020 8:43:15 AM - 4/6/2020 8:48:53 AM
+4/6/2020 8:48:53 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:53 AM: Query execution completed
+4/6/2020 8:48:53 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.NIR33391_AB3_Z3_NITRATE.F_CV.CSV
+4/6/2020 8:48:53 AM: Starting Raw Data Export for tag WWSCADA2.NIR33392_AB3_Z9_NITRATE.F_CV, from 4/6/2020 8:43:15 AM - 4/6/2020 8:48:53 AM
+4/6/2020 8:48:53 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:53 AM: Query execution completed
+4/6/2020 8:48:53 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.NIR33392_AB3_Z9_NITRATE.F_CV.CSV
+4/6/2020 8:48:53 AM: Starting Raw Data Export for tag WWSCADA2.NR4242.F_CV, from 4/6/2020 8:43:15 AM - 4/6/2020 8:48:53 AM
+4/6/2020 8:48:53 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:53 AM: Query execution completed
+4/6/2020 8:48:53 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.NR4242.F_CV.CSV
+4/6/2020 8:48:54 AM: Starting Raw Data Export for tag WWSCADA2.NIF31053_PE_TO_ABAS_FLOW.F_CV, from 4/6/2020 8:43:16 AM - 4/6/2020 8:48:54 AM
+4/6/2020 8:48:54 AM: Connected to Historian Server - ww-historian
+4/6/2020 8:48:54 AM: Query execution completed
+4/6/2020 8:48:54 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.NIF31053_PE_TO_ABAS_FLOW.F_CV.CSV
