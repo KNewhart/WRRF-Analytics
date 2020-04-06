@@ -1,0 +1,72 @@
+---
+title: "Real-time forecast of ammonia at BWRRF using statistical and machine learning"
+author: "Kate Newhart"
+date: "4/6/2020"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = "C:\\Users\\kbnewhart\\Dropbox\\Code\\WRRF-Analytics")
+```
+
+```{r load data, include=FALSE}
+library(taRifx)
+library(zoo)
+source("R output/Ammonia Forecast v2 - 0.R") # Load variables
+# Load forecast, persistence, and actual future values
+all.model.fit <- read.csv(file=paste0(historian.import.path,"ModelResults.csv"))
+all.model.fit <- remove.factors(all.model.fit)
+all.model.fit[,1] <- as.POSIXct(all.model.fit[,1])
+true.ammonia <- read.csv(file=paste0(historian.import.path,"WWSCADA2.NIA33391_AB3_AMMONIA.F_CV.CSV"))
+true.ammonia <- na.omit(remove.factors(true.ammonia))
+true.ammonia[,2] <- as.POSIXct(true.ammonia[,2], format="%m/%d/%Y %H:%M:%S")
+future.times <- as.POSIXct(all.model.fit[,1])+as.numeric(all.model.fit[,5])*60
+future.index <- sapply(future.times,function(x) (which(true.ammonia[,2]>x)[1]-1))
+all.model.fit <- cbind(all.model.fit, "Future"=true.ammonia[future.index,3])
+all.model.fit <- all.model.fit[(!apply(all.model.fit,1,anyNA)),]
+
+# Spilt data into different training windows
+list.model.fit <- lapply(unique(all.model.fit$Training.Window), 
+                         function(x) all.model.fit[which(all.model.fit$Training.Window==x),])
+```
+
+# Table of observations
+```{r table of observations, echo=FALSE}
+library(flextable)
+table.data <- data.frame("Training Window"=round(unique(all.model.fit$Training.Window),1),
+                           "Observations"=unlist(lapply(list.model.fit,nrow))
+                         ,stringsAsFactors = FALSE)
+names(table.data) <- gsub("[.]"," ",names(table.data))
+ft <- flextable(table.data)
+ft <- autofit(ft)
+ft
+```
+
+# Timeseries plots
+```{r plot results, echo=FALSE, message=FALSE, warning=FALSE}
+for(i in 1:length(list.model.fit)) {
+  model.fit <- list.model.fit[[i]]
+  
+  se.persistence <- apply(model.fit,1,function(x) (as.numeric(x[4])-as.numeric(x[7]))^2)
+  se.actual <- apply(model.fit,1,function(x) (as.numeric(x[3])-as.numeric(x[7]))^2)
+  rmse.persistence <- mean(se.persistence)^0.5
+  rmse.actual <- mean(se.actual)^0.5
+  
+  par(mar=c(2.5,4,2,1))
+  plot(zoo(x=model.fit[,4], 
+           order.by=model.fit[,1]), 
+       xlab="", ylab="Zone 7 Ammonia (mg/L)",
+       ylim=c(0,max(model.fit[,4])+3))
+  lines(zoo(x=model.fit[,3], order.by=model.fit[,1]), col="red")
+  lines(zoo(x=model.fit[,7], order.by=model.fit[,1]), col="blue")
+  legend("topright", legend=c("Persistence", "Forecast", "Future"), col=c("black", "red", "blue"), lwd=1)
+  mtext(paste("RMSE persistence =",round(rmse.persistence,2)), side=3, line=-1, adj=.01)
+  mtext(paste("RMSE forecast =",round(rmse.actual,2)), side=3, line=-2.25, adj=.01)
+  mtext(paste(round(unique(all.model.fit$Training.Window)[i],1),"day training window"), side=3, line=0.5, font=2)
+}
+```
+
+
