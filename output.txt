@@ -179,3 +179,8 @@ Loading required package: keras
 [1] "Importing files..."
 [1] "Merging files..."
 [1] "Finding timestamps..."
+[1] "Averaging to timestamps..."
+[1] "Setting up training data..."
+[1] "Train diurnal-linear model..."
+[1] "Train neural network..."
+2020-04-08 08:45:40.880222: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
