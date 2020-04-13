@@ -1,5 +1,5 @@
 Call ExportDataToCSV("ww-historian", "NIA33391_AB3_PREDICTED_AMMONIA.F_CV", "4/2/2020 16:00", Now)
-Call ExportDataToCSV("ww-historian", "WWSCADA2.NIA33391_AB3_AMMONIA.F_CV", "4/2/2020 16:00", Now)
+Call ExportDataToCSV("ww-historian", "WWSCADA2.NIA33391_AB3_AMMONIA.F_CV", "4/8/2020 00:00", Now)
 
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ' Function ExportDataToCSV(ServerName, TagName, StartTime, EndTime)
@@ -22,7 +22,7 @@ Sub ExportDataToCSV(strServerName, strTagName, dtStartTime, dtEndTime)
 
 	' Place output file in directory where script resides.
 	strOutputPath = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName)
-	' strOutputFile = strOutputPath & "\" & strTagName & "_" & DTFormat(dtStartTime) & "_" & DTFormat(dtEndTime) & ".CSV"
+	'strOutputFile = strOutputPath & "\" & strTagName & "_" & DTFormat(dtStartTime) & "_" & DTFormat(dtEndTime) & ".CSV"
 	strOutputFile = strOutputPath & "\" & strTagName & ".CSV"
 
 	' Make sure we can connect to Historian
