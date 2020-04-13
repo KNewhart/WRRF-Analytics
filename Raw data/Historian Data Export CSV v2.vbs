@@ -1,4 +1,4 @@
-Const n = 0.00271573852885652
+Const n = 0.00267460275579382
 
 Call ExportDataToCSV("ww-historian", "WWSCADA2.BASIN3_16_DO_PVENG.F_CV", Now-n, Now)
 Call ExportDataToCSV("ww-historian", "WWSCADA2.BASIN3_7_DO_PVENG.F_CV", Now-n, Now)
