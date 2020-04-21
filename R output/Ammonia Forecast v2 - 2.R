@@ -115,7 +115,7 @@ print("Setting up training data...")
 time.stamps <- difftime(index(mean.data), index(mean.data)[1], units = "mins")
 time.stamps <- as.numeric(time.stamps) %% 1440 # Cycles of 1 day are constructed (1440 min/day)
 time.stamps <- (time.stamps*360/1440)*pi/180 # Cycles of minutes are converted to radians
-diurnal.x <- do.call("cbind", lapply(1:6, function(n) {
+diurnal.x <- do.call("cbind", lapply(1:d, function(n) {
   eval(parse(text=paste0("sin(",n,"*time.stamps)","+cos(",n,"*time.stamps)", collapse="+")))
 }))
 mean.data <- cbind(mean.data, diurnal.x)
@@ -222,6 +222,7 @@ write.data
 model.fit <- data.frame("System.Time" = as.character(Sys.time()),
 						"Forecast.Time" = as.character(index(testing.data)), 
 						"Training.Days" = training.window,
+						"Diurnal.Pairs" = d,
 						"Frequncy.Mins" = data.interval/60,
 						"Horizon.Mins"=forecast.horizon,
 						"Rsqu" = r2, 
