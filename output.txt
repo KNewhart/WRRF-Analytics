@@ -117,3 +117,22 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 4/28/2020 8:07:43 AM: Connected to Historian Server - ww-historian
 4/28/2020 8:07:43 AM: Query execution completed
 4/28/2020 8:07:43 AM: File export completed - C:\Users\newhartk\Desktop\LIFT_2019\Raw data\WWSCADA2.NIF31053_PE_TO_ABAS_FLOW.F_CV.CSV
+[1] "Forecasting: NIA33391_AB3_AMMONIA"
+[1] "Forecasted Tag: NIA33391_AB3_PREDICTED_AMMONIA.F_CV"
+[1] "Forecast Horizon: 50"
+Loading required package: readr
+[1] "readr installed"
+[1] "readr loaded"
+Loading required package: xts
+Loading required package: zoo
+
+Attaching package: 'zoo'
+
+The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric
+
+[1] "xts installed"
+[1] "xts loaded"
+Loading required package: glmnet
+Loading required package: Matrix
