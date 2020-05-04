@@ -1,5 +1,5 @@
 Call ExportDataToCSV("ww-historian", "NIA33391_AB3_PREDICTED_AMMONIA.F_CV", "4/2/2020 16:00", Now)
-Call ExportDataToCSV("ww-historian", "WWSCADA2.NIA33391_AB3_AMMONIA.F_CV", "4/23/2020 00:00", Now)
+Call ExportDataToCSV("ww-historian", "WWSCADA2.NIA33391_AB3_AMMONIA.F_CV", "5/1/2020 00:00", Now)
 
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ' Function ExportDataToCSV(ServerName, TagName, StartTime, EndTime)
